@@ -1,0 +1,141 @@
+#include QMK_KEYBOARD_H
+#include "debug.h"
+#include "action_layer.h"
+#include "version.h"
+
+#define BASE 0 // default layer
+#define SYMB 1 // symbols
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+/* Keymap 0: Basic layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   `    |   1  |   2  |   3  |   4  |   5  | ESC  |           | P/P  |   6  |   7  |   8  |   9  |   0  | Bspace |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  Tab   |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L1  |   Y  |   U  |   I  |   O  |   P  |   \    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |  LCtrl |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+ * |--------+------+------+------+------+------| Enter|           | Del  |------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   Up |   /    |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | LWin | Mute |  VDn |  VUp |Space |                                       | RAlt | RCtrl| Left | Down | Right |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,---------------.
+ *                                        | Home | End |        |  [   |   ]    |
+ *                                 ,------|------|------|       |------+--------+------.
+ *                                 |      |      | PgUp |       |  =   |        |      |
+ *                                 | LAlt |Bspace|------|       |------|  Enter |Space |
+ *                                 |      |      | PgDn |       |  -   |        |      |
+ *                                 `--------------------'       `----------------------'
+ */
+[BASE] = LAYOUT_ergodox(
+  // left hand
+  KC_GRAVE,       KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_ESCAPE,
+  KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   OSL(SYMB),
+  KC_LCTRL,       KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
+  KC_LSHIFT,      KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   KC_ENTER,
+  KC_LGUI,        KC_MUTE,     KC_VOLD,KC_VOLU, KC_SPACE,
+                                                KC_HOME, KC_END,
+                                                         KC_PGUP,
+                                       KC_LALT,KC_BSPACE,KC_PGDOWN,
+  // right hand
+  KC_MPLY,     KC_6,   KC_7,    KC_8,     KC_9,    KC_0,     KC_BSPACE,
+  OSL(SYMB),   KC_Y,   KC_U,    KC_I,     KC_O,    KC_P,     KC_BSLS,
+               KC_H,   KC_J,    KC_K,     KC_L,    KC_SCLN,  KC_QUOT,
+  KC_DELETE,   KC_N,   KC_M,    KC_COMM,  KC_DOT,  KC_UP,    KC_SLASH,
+                       KC_RALT, KC_RCTRL, KC_LEFT, KC_DOWN,  KC_RIGHT,
+  KC_LBRACKET, KC_RBRACKET,
+  KC_EQUAL,
+  KC_MINUS, KC_ENTER, KC_SPACE
+),
+/* Keymap 1: Symbol Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |  F11 |  F12 |  F13 |  F14 |  F15 |      |           |      |NUMLCK| KP_7 | KP_8 | KP_9 |      | PSCR   |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |PrevT |      |NextT |      |      |------|           |------|      | KP_4 | KP_5 | KP_6 |      | SLCK   |
+ * |--------+------+------+------+------+------|      |           |INSERT|------+------+------+------+------+--------|
+ * | DEBUG  |      |      |      |      |      |      |           |      |      | KP_1 | KP_2 | KP_3 |      | PAUSE  |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | RESET|      |      |      |      |                                       | KP_0 | KP_. |      |      | RESET |
+ *   `----------------------------------'                                       `-----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |BL_TOG|       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |BL_INC|       |      |      |      |
+ *                                 |      |      |------|       |------| KP_ENTER    |
+ *                                 |      |      |BL_DEC|       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// SYMBOLS
+[SYMB] = LAYOUT_ergodox(
+  // left hand
+  KC_TRNS,  KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
+  KC_TRNS,  KC_F11, KC_F12, KC_F13, KC_F14, KC_F15, KC_TRNS,
+  KC_TRNS,  KC_MPRV,KC_TRNS,KC_MNXT,KC_TRNS,KC_TRNS,
+  DEBUG,    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+  RESET,    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                 KC_TRNS,BL_TOGG,
+                                         BL_INC,
+                         KC_TRNS,KC_TRNS,BL_DEC,
+  // right hand
+  KC_TRNS,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_TRNS,
+  KC_TRNS,  KC_NUMLOCK,  KC_P7,   KC_P8,   KC_P8,   KC_TRNS, KC_PSCREEN,
+              KC_TRNS,  KC_P4,   KC_P5,   KC_P6,   KC_TRNS, KC_SCROLLLOCK,
+  KC_INS,      KC_TRNS,  KC_P1,   KC_P2,   KC_P3,   KC_TRNS, KC_PAUSE,
+              KC_TRNS,  KC_P0,   KC_PDOT, KC_TRNS, RESET,
+  KC_TRNS,  KC_TRNS,
+  KC_TRNS,
+  KC_TRNS,  KC_KP_ENTER, KC_TRNS
+),
+};
+
+const uint16_t PROGMEM fn_actions[] = {
+  [1] = ACTION_LAYER_TAP_TOGGLE(SYMB) // FN1 - Momentary Layer 1 (Symbols)
+};
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  // MACRODOWN only works in this function
+  switch(id) {
+    case 0:
+      if (record->event.pressed) {
+        register_code(KC_RSFT);
+      } else {
+        unregister_code(KC_RSFT);
+      }
+      break;
+  }
+  return MACRO_NONE;
+};
+
+// Runs just one time when the keyboard initializes.
+void matrix_init_user(void) {
+
+};
+
+// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+  uint8_t layer = biton32(layer_state);
+
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+  switch (layer) {
+    case BASE:
+      break;
+
+    case SYMB:
+      ergodox_right_led_2_on();
+      ergodox_right_led_2_set(LED_BRIGHTNESS_LO);
+      break;
+
+    default:
+      break;
+  }
+
+};
