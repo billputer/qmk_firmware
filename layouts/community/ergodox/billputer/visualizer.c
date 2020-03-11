@@ -1,20 +1,24 @@
-/*
-Note: this is a modified copy of ../default/visualizer.c, originally licensed GPL.
-*/
-
 #include "simple_visualizer.h"
+#include "util.h"
 
-// This function should be implemented by the keymap visualizer
-// Don't change anything else than state->target_lcd_color and state->layer_text as that's the only thing
-// that the simple_visualizer assumes that you are updating
-// Also make sure that the buffer passed to state->layer_text remains valid until the previous animation is
-// stopped. This can be done by either double buffering it or by using constant strings
 static void get_visualizer_layer_and_color(visualizer_state_t* state) {
-    if (state->status.layer & 0x2) {
-        state->target_lcd_color = LCD_COLOR(236, 219, 95);
-        state->layer_text = "billboard - symbol";
-    } else {
-        state->target_lcd_color = LCD_COLOR(192, 0xFF, 117);
-        state->layer_text = "billboard";
-    }
+  uint8_t layer = biton32(state->status.layer);
+
+  switch (layer) {
+    case 1:
+      // #8EEBC9 / hsv(43.91%, 39.57%, 92.16%)
+      state->layer_text       = "billboard - symbol";
+      state->target_lcd_color = LCD_COLOR(112, 101, 189);
+      break;
+    case 2:
+      // #93D2F4 / hsv(55.84%, 39.75%, 95.69%)
+      state->layer_text       = "billboard - mouse";
+      state->target_lcd_color = LCD_COLOR(143, 102, 245);
+      break;
+    default:
+      // TODO: determine proper hex code for this color
+      state->layer_text       = "billboard";
+      state->target_lcd_color = LCD_COLOR(192, 0xFF, 117);
+      break;
+  }
 }
