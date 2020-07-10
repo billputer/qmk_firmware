@@ -90,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |     |       |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |TO(0) |WHL_UP|WHL_LT|WHL_RT|      |      |        |
+ * |        |      |      |      |      |      |      |           |TO(0) |WHL_LT|WHL_DWN|WHL_UP|WHL_RT|     |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |------|           |------|M_LEFT|M_DOWN| M_UP |M_RGHT|      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |WHL_DWN|     |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |       |     |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |M_BTN1|M_BTN2|      |      |       |
  *   `----------------------------------'                                       `-----------------------------------'
@@ -118,9 +118,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_TRNS, KC_TRNS, KC_TRNS,
   // right hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  TO(0),   KC_MS_WH_UP, KC_MS_WH_LEFT, KC_MS_WH_RIGHT, KC_TRNS, KC_TRNS, KC_TRNS,
+  TO(0),   KC_MS_WH_LEFT, KC_MS_WH_DOWN, KC_MS_WH_UP, KC_MS_WH_RIGHT, KC_TRNS, KC_TRNS,
            KC_MS_LEFT,KC_MS_DOWN,KC_MS_UP,KC_MS_RIGHT,KC_TRNS,KC_TRNS,
-  KC_TRNS, KC_MS_WH_DOWN, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_MS_BTN1, KC_MS_BTN2, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS,
   KC_TRNS,
