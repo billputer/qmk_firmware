@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |BL_TOG|      |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |BL_INC|       |      |      |      |
- *                                 |      |      |------|       |------|      |    |
+ *                                 |      |      |------|       |------|      |MS_BTN3|
  *                                 |      |      |BL_DEC|       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS,  KC_TRNS,
   KC_TRNS,
-  KC_TRNS,  KC_KP_ENTER, KC_TRNS
+  KC_TRNS,  KC_KP_ENTER, KC_MS_BTN3
 ),
 /* Layer 2: Mouse
  *
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |------|       |------|      |MS_BTN3|
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_MS_BTN1, KC_MS_BTN2, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS,
   KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS
+  KC_TRNS, KC_TRNS, KC_MS_BTN3
 ),
 };
 
