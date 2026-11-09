@@ -9,6 +9,7 @@
 
 // shorten tapping
 #define TAPPING_TERM 150
+#define PERMISSIVE_HOLD
 
 #undef RGBLIGHT_LED_COUNT
 #define RGBLIGHT_EFFECT_BREATHING
